@@ -9,13 +9,25 @@ sometimes, we also need to generate dummy buffer, such 4096 char random buffer. 
 
 this is reason I invented this tool
 
-## usage
-`./dtcp 127.0.0.1 8000`
+## usage and install
+`make binary`
+`make install`
+`dtcp 127.0.0.1 8000`
 
 which 127.0.0.1 is IP address, 8000 is portnumber
 
-## keyboard key
-asap in documentation
+## command and keyboard
+`esc` : exit
+`/genbuf` : generate repeat character as many as N
+synopsis: "string" character, "int" how many?
+`/genrandbuf` : generate random string as many as N
+synopsis: "int" how many?
+`/n` : generate LF linebreak
+`/r` : generate CR linebreak
+`/nr` : generate CRLF linebreak
+`/nr2` : generate CRLFCRLF linebreak (usually used in HTTP protocol)
+
+
 
 ## contributing
 any feature such udp support, IPV6 support, or other are welcomed
