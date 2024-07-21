@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"dtcp/utils"
 	"fmt"
 	"log"
 	"net"
@@ -54,7 +55,7 @@ func readFromserver(conn net.Conn) {
 			return
 		}
 		recvtext := string(buf)
-		fmt.Print("[reply] ", recvtext)
+		fmt.Print("[reply] ", utils.SeeLinebreak(recvtext))
 	}
 }
 
