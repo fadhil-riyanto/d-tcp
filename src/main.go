@@ -40,6 +40,10 @@ func main() {
 		os.Exit(0)
 	}
 
-	fmt.Println(prop.host)
-	fmt.Println(prop.port)
+	conn := OpenTCPConnection(prop.host, int(prop.port))
+	ReplEventloop(conn)
+
+	defer func() {
+		_ = conn.Close()
+	}()
 }
