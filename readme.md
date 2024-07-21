@@ -18,13 +18,19 @@ which 127.0.0.1 is IP address, 8000 is portnumber
 
 ## command and keyboard
 `esc` : exit
+
 `/genbuf` : generate repeat character as many as N
 synopsis: "string" character, "int" how many?
+
 `/genrandbuf` : generate random string as many as N
 synopsis: "int" how many?
+
 `/n` : generate LF linebreak
+
 `/r` : generate CR linebreak
+
 `/nr` : generate CRLF linebreak
+
 `/nr2` : generate CRLFCRLF linebreak (usually used in HTTP protocol)
 
 
