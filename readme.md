@@ -4,22 +4,21 @@ this is advanced TCP debugger, inspired by 'nc' command in
 *nix system
 
 ## motivation
-while developing TCP socket based application, nc command will also send \n as a buffer to the tcp server, this is weird
+while developing TCP socket based application, nc command will also send \n as a buffer to the tcp server, this is weird.
+sometimes, we also need to generate dummy buffer, such 4096 char random buffer. or normal may http raw request in order get response from server as raw tcp.
 
-sometimes, we need to generate dummy buffer, such 4096 char random buffer. this is reason I invented this tool
+this is reason I invented this tool
 
 ## usage
-`./dtcp -p 8000`
+`./dtcp 127.0.0.1 8000`
 
-spesify host using: `./dtcp -h 127.0.0.1 -p 8000`
-
-by default, DTCP uses 127.0.0.1 loopback as a host
+which 127.0.0.1 is IP address, 8000 is portnumber
 
 ## keyboard key
 asap in documentation
 
 ## contributing
-any feature such udp support, or other are welcomed
+any feature such udp support, IPV6 support, or other are welcomed
 
 ## License
 MIT, maintained by <a href="https://github.com/fadhil-riyanto/">Fadhil Riyanto</a>
