@@ -35,6 +35,9 @@ func handleCommand(data string) string {
 		if fn[0] == "n" {
 			return "\n"
 		}
+		if fn[0] == "r" {
+			return "\r"
+		}
 		if fn[0] == "nr" {
 			return "\n\r"
 		}
