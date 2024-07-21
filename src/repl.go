@@ -38,11 +38,11 @@ func handleCommand(data string) string {
 		if fn[0] == "r" {
 			return "\r"
 		}
-		if fn[0] == "nr" {
-			return "\n\r"
+		if fn[0] == "rn" {
+			return "\r\n"
 		}
-		if fn[0] == "nr2" {
-			return "\n\r\r\n"
+		if fn[0] == "rn2" {
+			return "\r\n\r\n"
 		}
 	}
 	return data

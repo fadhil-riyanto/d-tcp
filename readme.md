@@ -29,9 +29,9 @@ synopsis: "int" how many?
 
 `/r` : generate CR linebreak
 
-`/nr` : generate CRLF linebreak
+`/rn` : generate CRLF linebreak
 
-`/nr2` : generate CRLFCRLF linebreak (usually used in HTTP protocol)
+`/rn2` : generate CRLFCRLF linebreak (usually used in HTTP protocol)
 
 
 
