@@ -23,6 +23,28 @@ func handleCommand(data string) string {
 			return Genbuf(fn[1], ourint)
 		}
 
+		if fn[0] == "genbufln" {
+			ourint, err := strconv.Atoi(fn[2])
+			if err != nil {
+				panic(err)
+			}
+			return Genbuf(fn[1]+"\n", ourint)
+		}
+		if fn[0] == "genbuflrn" {
+			ourint, err := strconv.Atoi(fn[2])
+			if err != nil {
+				panic(err)
+			}
+			return Genbuf(fn[1]+"\r\n", ourint)
+		}
+		if fn[0] == "genbuflrn2" {
+			ourint, err := strconv.Atoi(fn[2])
+			if err != nil {
+				panic(err)
+			}
+			return Genbuf(fn[1]+"\r\n\r\n", ourint)
+		}
+
 		if fn[0] == "genrandbuf" {
 			ourint, err := strconv.Atoi(fn[1])
 			if err != nil {
