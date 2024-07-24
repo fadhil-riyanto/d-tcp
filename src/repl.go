@@ -11,6 +11,18 @@ import (
 	"strings"
 )
 
+func handleAppNoCommand(data string, plain *bool) int {
+	if data[0] == '!' {
+		fn := strings.Split(data[1:], " ")
+
+		if fn[0] == "plain" {
+			*plain = !*plain
+		}
+		return -1
+	}
+	return 0
+}
+
 func handleCommand(data string) string {
 	if data[0] == '/' {
 		fn := strings.Split(data[1:], " ")
@@ -70,7 +82,7 @@ func handleCommand(data string) string {
 	return data
 }
 
-func readFromserver(conn net.Conn) {
+func readFromserver(conn net.Conn, plain *bool) {
 	for {
 		buf := make([]byte, 1024)
 
@@ -80,12 +92,19 @@ func readFromserver(conn net.Conn) {
 			return
 		}
 		recvtext := string(buf)
-		fmt.Print("[reply] ", utils.SeeLinebreak(recvtext))
+
+		if *plain {
+			fmt.Print(recvtext)
+		} else {
+			fmt.Print("[reply] ", utils.SeeLinebreak(recvtext))
+		}
 	}
 }
 
 func ReplEventloop(conn net.Conn) {
-	go readFromserver(conn)
+
+	var plain bool = false
+	go readFromserver(conn, &plain)
 
 	for {
 		consoleReader := bufio.NewReaderSize(os.Stdin, 1)
@@ -97,9 +116,13 @@ func ReplEventloop(conn net.Conn) {
 			os.Exit(0)
 		}
 
-		commandresult := handleCommand(strings.TrimSuffix(inputtext, "\n"))
+		ret := handleAppNoCommand(strings.TrimSuffix(inputtext, "\n"), &plain)
 
-		conn.Write([]byte(commandresult))
+		if ret != -1 {
+			commandresult := handleCommand(strings.TrimSuffix(inputtext, "\n"))
+
+			conn.Write([]byte(commandresult))
+		}
 
 	}
 
